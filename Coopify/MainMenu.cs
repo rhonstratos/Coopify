@@ -3,9 +3,9 @@
     public partial class MainMenu : Form
     {
         private readonly Login parent;
-        private Dashboard child_dash = new();
-        private Inventory child_inven = new();
-        private ReportBuilder child_report = new();
+        private Dashboard child_dash;
+        private Inventory child_inven;
+        private ReportBuilder child_report;
         public MainMenu(Login parent)
         {
             InitializeComponent();
@@ -14,8 +14,7 @@
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Dispose();
-            parent.Show();
+            mm_formclosing();
         }
         private void CloseChildExcept(string FormName)
         {
@@ -32,6 +31,8 @@
                     child_inven.Dispose();
                 if(fname.Contains("ReportBuilder"))
                     child_report.Dispose();
+                if (fname.Contains("Dashboard"))
+                    child_report.Dispose();
             }
             if (FormName.Equals("Inventory"))
             {
@@ -39,6 +40,8 @@
                     child_dash.Dispose();
                 if(fname.Contains("ReportBuilder"))
                     child_report.Dispose();
+                if (fname.Contains("Inventory"))
+                    child_inven.Dispose();
             }
             if (FormName.Equals("ReportBuilder"))
             {
@@ -46,32 +49,56 @@
                     child_inven.Dispose();
                 if(fname.Contains("Dashboard"))
                     child_dash.Dispose();
+                if (fname.Contains("ReportBuilder"))
+                    child_report.Dispose();
             }
         }
         private void Dboard_ItemClick(object sender, EventArgs e)
         {
-            CloseChildExcept("Dashboard");
-            child_dash = new();
-            child_dash.Show();
+            click_dashboard();
+        }
+        private void Ivn_ItemClick(object sender, EventArgs e)
+        {
+            click_inventory();
+        }
+        private void Reportbuilder_ItemClick(object sender, EventArgs e)
+        {
+            click_report();
+        }
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            mm_load();
         }
 
-        private void Ivn_ItemClick(object sender, EventArgs e)
+        private void mm_formclosing()
+        {
+            this.Dispose();
+            parent.Show();
+        }
+        private void click_dashboard()
+        {
+            CloseChildExcept("Dashboard");
+            child_dash = new();
+            child_dash.MdiParent = this;
+            child_dash.Show();
+        }
+        private void click_inventory()
         {
             CloseChildExcept("Inventory");
             child_inven = new();
+            child_inven.MdiParent = this;
             child_inven.Show();
         }
-
-        private void Reportbuilder_ItemClick(object sender, EventArgs e)
+        private void click_report()
         {
             CloseChildExcept("ReportBuilder");
             child_report = new();
+            child_report.MdiParent = this;
             child_report.Show();
         }
-
-        private void MainMenu_Load(object sender, EventArgs e)
+        private void mm_load()
         {
-            child_dash.Show();
+            click_dashboard();
         }
     }
 }

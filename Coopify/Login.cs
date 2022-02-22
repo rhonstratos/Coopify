@@ -8,8 +8,25 @@ namespace Coopify
             InitializeComponent();
             this.ActiveControl = this.txt_user;
         }
-
         private void Button1_Click(object sender, EventArgs e)
+        {
+            LoginAccount();
+        }
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Login_Closing();
+        }
+        private void txt_user_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                this.ActiveControl = this.txt_pass;
+        }
+        private void txt_pass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                LoginAccount();
+        }
+        private void LoginAccount()
         {
             try
             {
@@ -35,8 +52,7 @@ namespace Coopify
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        private void Login_Closing()
         {
             this.Dispose();
         }

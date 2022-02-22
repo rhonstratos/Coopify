@@ -54,6 +54,7 @@
             this.txt_user.Name = "txt_user";
             this.txt_user.Size = new System.Drawing.Size(308, 23);
             this.txt_user.TabIndex = 1;
+            this.txt_user.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_user_KeyPress);
             // 
             // label1
             // 
@@ -80,6 +81,8 @@
             this.txt_pass.PasswordChar = '●';
             this.txt_pass.Size = new System.Drawing.Size(308, 23);
             this.txt_pass.TabIndex = 3;
+            this.txt_pass.UseSystemPasswordChar = true;
+            this.txt_pass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_pass_KeyPress);
             // 
             // login_icon
             // 

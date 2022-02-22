@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ActiveAcount = new System.Windows.Forms.ToolStripMenuItem();
             this.dboard = new System.Windows.Forms.ToolStripMenuItem();
             this.inv = new System.Windows.Forms.ToolStripMenuItem();
             this.reportbuilder = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,9 +70,11 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AllowMerge = false;
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ActiveAcount,
             this.dboard,
             this.inv,
             this.reportbuilder});
@@ -81,11 +84,22 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // ActiveAcount
+            // 
+            this.ActiveAcount.AutoSize = false;
+            this.ActiveAcount.Image = global::Coopify.Properties.Resources.woggy_wineWink;
+            this.ActiveAcount.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ActiveAcount.Name = "ActiveAcount";
+            this.ActiveAcount.Size = new System.Drawing.Size(190, 170);
+            this.ActiveAcount.Text = "Administrator";
+            this.ActiveAcount.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ActiveAcount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // dboard
             // 
             this.dboard.AutoSize = false;
             this.dboard.Name = "dboard";
-            this.dboard.Size = new System.Drawing.Size(350, 50);
+            this.dboard.Size = new System.Drawing.Size(190, 50);
             this.dboard.Text = "Dashboard";
             this.dboard.Click += new System.EventHandler(this.Dboard_ItemClick);
             // 
@@ -93,7 +107,7 @@
             // 
             this.inv.AutoSize = false;
             this.inv.Name = "inv";
-            this.inv.Size = new System.Drawing.Size(350, 50);
+            this.inv.Size = new System.Drawing.Size(190, 50);
             this.inv.Text = "Inventory";
             this.inv.Click += new System.EventHandler(this.Ivn_ItemClick);
             // 
@@ -101,12 +115,13 @@
             // 
             this.reportbuilder.AutoSize = false;
             this.reportbuilder.Name = "reportbuilder";
-            this.reportbuilder.Size = new System.Drawing.Size(350, 50);
+            this.reportbuilder.Size = new System.Drawing.Size(190, 50);
             this.reportbuilder.Text = "Report Builder";
             this.reportbuilder.Click += new System.EventHandler(this.Reportbuilder_ItemClick);
             // 
             // menuStrip2
             // 
+            this.menuStrip2.AllowMerge = false;
             this.menuStrip2.AutoSize = false;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -356,6 +371,7 @@
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coopify";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -402,5 +418,6 @@
         private ToolStripMenuItem searchToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem aboutToolStripMenuItem;
+        private ToolStripMenuItem ActiveAcount;
     }
 }
